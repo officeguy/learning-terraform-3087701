@@ -63,16 +63,13 @@ module "alb" {
   ]
 
 
-  http_listeners = [
-    {
+  http_listeners = {
+    default = {
       port               = 80
       protocol           = "HTTP"
-      default_action = {
-        type             = "forward"
-        target_group_arn = "self"
-      }
+      target_group       = "blog"
     }
-  ]
+  }
   
 
   tags = {
