@@ -56,34 +56,4 @@ module "alb" {
   target_groups = [
     {
       name_prefix      = "blog-"
-      backend_protocol = "HTTP"
-      backend_port     = 80
-      target_type      = "instance"
-    }
-  ]
-
-  listeners = [
-    {
-      port               = 80
-      protocol           = "HTTP"
-      target_group_index = 0
-    }
-  ]
-
-  tags = {
-    Environment = "dev"
-  }
-}
-
-module "blog_sg" {
-  source  = "terraform-aws-modules/security-group/aws"
-  version = "5.1.2"
-  name    = "blog_new"
-
-  vpc_id              = module.blog_vpc.vpc_id
-  ingress_rules       = ["http-80-tcp", "https-443-tcp"]
-  ingress_cidr_blocks = ["0.0.0.0/0"]
-  
-  egress_rules       = ["all-all"]
-  egress_cidr_blocks = ["0.0.0.0/0"]
-}
+      backend_prot
